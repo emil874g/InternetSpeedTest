@@ -165,3 +165,68 @@ URL:      https://www.speedtest.net/result/c/c8518efe-d46c-4655-a3a1-29c51a703cf
 ========================================
 Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
 Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:35:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     4.135 ms
+JITTER:   0.76 ms
+DOWNLOAD: 469.25 Mbps
+UPLOAD:   506.72 Mbps
+URL:      https://www.speedtest.net/result/c/a3fd3ca2-d896-46bf-8e02-8e564a399544
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:40:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.853 ms
+JITTER:   0.135 ms
+DOWNLOAD: 586.96 Mbps
+UPLOAD:   446.03 Mbps
+URL:      https://www.speedtest.net/result/c/400c37bb-0e65-435b-81e5-0bfd4842e982
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:45:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.729 ms
+JITTER:   0.084 ms
+DOWNLOAD: 700.75 Mbps
+UPLOAD:   669.69 Mbps
+URL:      https://www.speedtest.net/result/c/9919ba36-ca89-4b99-9cf8-1c9c1b508e31
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:50:01] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.788 ms
+JITTER:   0.809 ms
+DOWNLOAD: 706.97 Mbps
+UPLOAD:   773.86 Mbps
+URL:      https://www.speedtest.net/result/c/e3db0f80-69c7-4c9a-86bd-e2d8cc435917
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:55:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.951 ms
+JITTER:   0.128 ms
+DOWNLOAD: 755.76 Mbps
+UPLOAD:   633.4 Mbps
+URL:      https://www.speedtest.net/result/c/db79725c-89fd-43c0-b176-feb09e797cf1
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
