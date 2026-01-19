@@ -5,35 +5,32 @@ import os
 import platform
 from datetime import datetime
 
-# --- INTELLIGENT CONFIGURATION ---
+# --- CONFIGURATION ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+SYSTEM_OS = platform.system()
 
-# 1. Determine OS and set binary name
-SYSTEM_OS = platform.system() # Returns 'Windows' or Mac/Linux
-
+# Set path to the Speedtest engine based on the OS
 if SYSTEM_OS == "Windows":
-    # On the Lenovo, we expect speedtest.exe to be in the SAME folder as this script
+    # On Lenovo: Looks for speedtest.exe in the same folder as this script
     SPEEDTEST_CMD = os.path.join(SCRIPT_DIR, "speedtest.exe")
 else:
-    # On Mac/Linux, we assume it's installed via Brew/Apt and is in the global PATH
-    # If this fails, you can hardcode the path like "/opt/homebrew/bin/speedtest"
-    SPEEDTEST_CMD = "speedtest" 
+    # On Mac: Uses the 'speedtest' command installed via Brew
+    SPEEDTEST_CMD = "speedtest"
 
-# 2. Log File Path (Saves to the repo folder by default)
+# Local CSV file path
 LOG_FILE = os.path.join(SCRIPT_DIR, "office_internet_speeds.csv")
-# ---------------------------------
+# ---------------------
 
 def run_test():
-    print(f"[{datetime.now()}] Running on {SYSTEM_OS}...")
+    print(f"\n[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Launching Speedtest on {SYSTEM_OS}...")
     
-    # Check if Windows binary exists before running
+    # Check if Windows binary exists before starting
     if SYSTEM_OS == "Windows" and not os.path.exists(SPEEDTEST_CMD):
-        print(f"CRITICAL ERROR: 'speedtest.exe' not found in {SCRIPT_DIR}")
-        print("Please download the Windows CLI from Ookla and place it here.")
+        print(f"ERROR: 'speedtest.exe' not found in {SCRIPT_DIR}")
         return
 
     try:
-        # Run the command
+        # Run Ookla CLI with JSON formatting
         cmd = [SPEEDTEST_CMD, '-f', 'json', '--accept-license']
         result = subprocess.run(cmd, capture_output=True, text=True)
         
@@ -41,30 +38,50 @@ def run_test():
             print(f"Speedtest Error: {result.stderr}")
             return
 
+        # Parse raw JSON data
         data = json.loads(result.stdout)
         
-        # Parse Data
+        # Calculations (Convert Bytes to Mbps)
+        download_mbps = round(data['download']['bandwidth'] / 125000, 2)
+        upload_mbps = round(data['upload']['bandwidth'] / 125000, 2)
+        
+        # 1. VISUAL TERMINAL OUTPUT
+        print("="*40)
+        print(f"ISP:      {data['isp']}")
+        print(f"SERVER:   {data['server']['name']} ({data['server']['location']})")
+        print(f"PING:     {data['ping']['latency']} ms")
+        print(f"JITTER:   {data['ping']['jitter']} ms")
+        print(f"DOWNLOAD: {download_mbps} Mbps")
+        print(f"UPLOAD:   {upload_mbps} Mbps")
+        print(f"URL:      {data['result']['url']}")
+        print("="*40)
+
+        # 2. PREPARE DATA FOR CSV
         row = {
             "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "Device": platform.node(), # Logs which machine ran the test
-            "Download_Mbps": round(data['download']['bandwidth'] / 125000, 2),
-            "Upload_Mbps": round(data['upload']['bandwidth'] / 125000, 2),
+            "Device": platform.node(),
+            "Download_Mbps": download_mbps,
+            "Upload_Mbps": upload_mbps,
             "Ping_ms": data['ping']['latency'],
-            "Link": data['result']['url']
+            "Jitter_ms": data['ping']['jitter'],
+            "Packet_Loss": data.get('packetLoss', 0),
+            "ISP": data['isp'],
+            "Server": f"{data['server']['name']} ({data['server']['location']})",
+            "Result_Link": data['result']['url']
         }
         
-        # Save to CSV
+        # Write to CSV
         file_exists = os.path.isfile(LOG_FILE)
-        with open(LOG_FILE, 'a', newline='') as f: 
+        with open(LOG_FILE, 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=row.keys())
             if not file_exists:
                 writer.writeheader()
             writer.writerow(row)
             
-        print(f"Success! {row['Download_Mbps']} Mbps logged.")
+        print(f"Successfully logged to {LOG_FILE}")
 
     except Exception as e:
-        print(f"Script Crashed: {e}")
+        print(f"CRITICAL FAILURE: {e}")
 
 if __name__ == "__main__":
     run_test()
