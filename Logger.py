@@ -9,16 +9,20 @@ from datetime import datetime
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SYSTEM_OS = platform.system()
 
-# Set path to the Speedtest engine based on the OS
+# 1. Path to the Speedtest engine
 if SYSTEM_OS == "Windows":
-    # On Lenovo: Looks for speedtest.exe in the same folder as this script
     SPEEDTEST_CMD = os.path.join(SCRIPT_DIR, "speedtest.exe")
 else:
-    # On Mac: Uses the 'speedtest' command installed via Brew
-    SPEEDTEST_CMD = "speedtest"
+    SPEEDTEST_CMD = "/usr/local/bin/speedtest"
 
-# Local CSV file path
-LOG_FILE = os.path.join(SCRIPT_DIR, "office_internet_speeds.csv")
+# 2. Define BOTH locations
+LOCAL_LOG = os.path.join(SCRIPT_DIR, "office_internet_speeds.csv")
+
+if SYSTEM_OS == "Darwin":
+    CLOUD_LOG = "/Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv"
+else:
+    # On Windows, update 'G:' to whatever your Google Drive letter is
+    CLOUD_LOG = r"G:\My Drive\SpeedTest\office_speeds.csv"
 # ---------------------
 
 def run_test():
@@ -70,15 +74,25 @@ def run_test():
             "Result_Link": data['result']['url']
         }
         
-        # Write to CSV
-        file_exists = os.path.isfile(LOG_FILE)
-        with open(LOG_FILE, 'a', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=row.keys())
-            if not file_exists:
-                writer.writeheader()
-            writer.writerow(row)
-            
-        print(f"Successfully logged to {LOG_FILE}")
+        # Function to handle writing (saves us repeating code)
+        def save_to_csv(file_path, data_row):
+            try:
+                # Create directory if it doesn't exist (important for the Cloud path)
+                os.makedirs(os.path.dirname(file_path), exist_ok=True)
+                
+                file_exists = os.path.isfile(file_path)
+                with open(file_path, 'a', newline='') as f:
+                    writer = csv.DictWriter(f, fieldnames=data_row.keys())
+                    if not file_exists:
+                        writer.writeheader()
+                    writer.writerow(data_row)
+                print(f"Successfully logged to {file_path}")
+            except Exception as e:
+                print(f"Failed to write to {file_path}: {e}")
+
+        # Write to both!
+        save_to_csv(LOCAL_LOG, row)
+        save_to_csv(CLOUD_LOG, row)
 
     except Exception as e:
         print(f"CRITICAL FAILURE: {e}")

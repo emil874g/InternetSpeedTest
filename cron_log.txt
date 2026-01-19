@@ -1,0 +1,167 @@
+
+[2026-01-19 14:20:00] Launching Speedtest on Darwin...
+CRITICAL FAILURE: [Errno 2] No such file or directory: 'speedtest'
+
+[2026-01-19 14:25:00] Launching Speedtest on Darwin...
+CRITICAL FAILURE: [Errno 2] No such file or directory: 'speedtest'
+
+[2026-01-19 14:30:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.897 ms
+JITTER:   0.101 ms
+DOWNLOAD: 624.82 Mbps
+UPLOAD:   625.73 Mbps
+URL:      https://www.speedtest.net/result/c/6e237591-8b20-4851-bc17-455192fc57c1
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+
+[2026-01-19 14:35:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.838 ms
+JITTER:   0.032 ms
+DOWNLOAD: 677.29 Mbps
+UPLOAD:   625.09 Mbps
+URL:      https://www.speedtest.net/result/c/41f1393e-de19-4c6b-b438-83f62b9d498b
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+
+[2026-01-19 14:40:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.756 ms
+JITTER:   0.168 ms
+DOWNLOAD: 614.55 Mbps
+UPLOAD:   538.77 Mbps
+URL:      https://www.speedtest.net/result/c/2aefd3ab-fcf7-41d1-9b8c-cdaa475e06b3
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+
+[2026-01-19 14:45:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.858 ms
+JITTER:   0.162 ms
+DOWNLOAD: 600.8 Mbps
+UPLOAD:   878.5 Mbps
+URL:      https://www.speedtest.net/result/c/b9067612-3995-410e-82cd-3129bd46a4c0
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+
+[2026-01-19 14:50:01] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.54 ms
+JITTER:   0.092 ms
+DOWNLOAD: 653.95 Mbps
+UPLOAD:   624.03 Mbps
+URL:      https://www.speedtest.net/result/c/0ca83e1f-b223-4616-ab3e-1fef53114e92
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+
+[2026-01-19 14:55:01] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.547 ms
+JITTER:   0.325 ms
+DOWNLOAD: 679.21 Mbps
+UPLOAD:   888.41 Mbps
+URL:      https://www.speedtest.net/result/c/2133bcbc-5e3f-4bfb-b79f-a85bf3143656
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+
+[2026-01-19 15:00:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.522 ms
+JITTER:   0.091 ms
+DOWNLOAD: 787.76 Mbps
+UPLOAD:   683.38 Mbps
+URL:      https://www.speedtest.net/result/c/e6c6f988-ef81-4e24-abf0-8665d637302a
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+
+[2026-01-19 15:05:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     9.576 ms
+JITTER:   2.2 ms
+DOWNLOAD: 811.94 Mbps
+UPLOAD:   503.32 Mbps
+URL:      https://www.speedtest.net/result/c/1089ae9f-da80-4943-be61-a603be1eb737
+========================================
+CRITICAL FAILURE: name 'LOG_FILE' is not defined
+
+[2026-01-19 15:10:01] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.878 ms
+JITTER:   0.156 ms
+DOWNLOAD: 558.29 Mbps
+UPLOAD:   419.2 Mbps
+URL:      https://www.speedtest.net/result/c/09b29e0e-5cdd-4471-a9e6-e6ff50aa21f9
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:15:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.927 ms
+JITTER:   0.048 ms
+DOWNLOAD: 705.15 Mbps
+UPLOAD:   519.88 Mbps
+URL:      https://www.speedtest.net/result/c/c56ad810-ea07-483e-9bc1-a2a77c7de889
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:20:01] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.944 ms
+JITTER:   0.127 ms
+DOWNLOAD: 832.88 Mbps
+UPLOAD:   442.46 Mbps
+URL:      https://www.speedtest.net/result/c/921c47ef-d8ef-4f20-98a1-da990bbd4178
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:25:01] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.907 ms
+JITTER:   0.103 ms
+DOWNLOAD: 821.33 Mbps
+UPLOAD:   620.24 Mbps
+URL:      https://www.speedtest.net/result/c/afa4a2be-404a-4cf7-ab75-6cfc623f34fd
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
+
+[2026-01-19 15:30:00] Launching Speedtest on Darwin...
+========================================
+ISP:      Fibia
+SERVER:   Fibia P/S (Taastrup)
+PING:     3.777 ms
+JITTER:   0.152 ms
+DOWNLOAD: 778.53 Mbps
+UPLOAD:   832.87 Mbps
+URL:      https://www.speedtest.net/result/c/c8518efe-d46c-4655-a3a1-29c51a703cfd
+========================================
+Successfully logged to /Users/emillydersen/Desktop/Code/Work/InternetSpeedTest/office_internet_speeds.csv
+Successfully logged to /Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv
