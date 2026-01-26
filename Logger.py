@@ -22,7 +22,7 @@ if SYSTEM_OS == "Darwin":
     CLOUD_LOG = "/Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv"
 else:
     # On Windows, update 'G:' to whatever your Google Drive letter is
-    CLOUD_LOG = r"G:\My Drive\SpeedTest\office_speeds.csv"
+    CLOUD_LOG = r"C:\Users\arh\My Drive\SpeedTest\office_speeds.csv"
 # ---------------------
 
 def run_test():
