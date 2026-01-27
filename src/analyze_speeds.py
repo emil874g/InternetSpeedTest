@@ -5,11 +5,15 @@ import os
 
 sns.set(style="whitegrid")
 
-# Point to your Google Drive CSV
-CSV_PATH = "/Users/emillydersen/Library/CloudStorage/GoogleDrive-emilbdl@gmail.com/Mit drev/SpeedTest/office_speeds.csv"
+# Point to the CSV file in the parent directory
+CSV_PATH = os.path.join(os.path.dirname(__file__), "..", "office_internet_speeds.csv")
 
 # LOAD + CLEAN DATA
-df = pd.read_csv(CSV_PATH, parse_dates=["Timestamp"])
+df = pd.read_csv(CSV_PATH)
+# Strip whitespace from column names
+df.columns = df.columns.str.strip()
+# Parse Timestamp after cleaning column names
+df["Timestamp"] = pd.to_datetime(df["Timestamp"])
 
 # 1. ONLY acstation1 data
 df_acstation = df[df["Device"].str.contains("acstation", case=False, na=False)].copy()
