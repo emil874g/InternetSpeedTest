@@ -11,78 +11,50 @@ os.makedirs(CHARTS_DIR, exist_ok=True)
 print("📊 Loading clean data for analysis...")
 df = pd.read_csv(CLEAN_CSV)
 df["Timestamp"] = pd.to_datetime(df["Timestamp"])
-df = df.sort_values("Timestamp") # Ensure chronological order for line charts
 
-# ==========================================
-# 3. CALCULATE OVERALL MEANS
-# ==========================================
-mean_dl = df["Download_Mbps"].mean()
-mean_ul = df["Upload_Mbps"].mean()
-
-print("\n" + "="*50)
-print("📈 OVERALL AVERAGE SPEEDS:")
-print(f"   ⬇️ Download: {mean_dl:.2f} Mbps")
-print(f"   ⬆️ Upload:   {mean_ul:.2f} Mbps")
-print("="*50 + "\n")
-
-# ==========================================
-# BUSINESS LOGIC (Office vs Off-Hours)
-# ==========================================
+#--------------------------------------------------------------------------------------------
+# 2. FILTER DATA (WEEKDAYS ONLY)
 df["Hour"] = df["Timestamp"].dt.hour
 df["Day_of_Week"] = df["Timestamp"].dt.dayofweek  # Monday=0, Sunday=6
 
-office_mask = (df["Day_of_Week"] < 5) & (df["Hour"] >= 8) & (df["Hour"] <= 16)
+# Completely drop weekends to prevent skewed, low-sample data from ruining the charts
+weekday_df = df[df["Day_of_Week"] < 5].copy()
 
-df["Time_Period"] = "Off-Hours (Quiet)"
-df.loc[office_mask, "Time_Period"] = "Office Hours (Busy)"
+# Filter for the 8-16 timeframe (already filtered to just weekdays)
+office_df = weekday_df[(weekday_df["Hour"] >= 8) & (weekday_df["Hour"] <= 16)].copy()
 
-# ==========================================
-# CHART 1: TIMELINE SCATTER PLOT
-# ==========================================
-print("📈 Generating Timeline Scatter Chart...")
-fig1 = px.scatter(
-    df, x="Timestamp", y="Download_Mbps", color="Time_Period",
-    hover_data=["Upload_Mbps", "Ping_ms"],
-    title="Internet Download Speeds: Office Load vs. Off-Hours",
-    labels={"Download_Mbps": "Download Speed (Mbps)", "Timestamp": "Date / Time"},
-    color_discrete_map={"Office Hours (Busy)": "#ef553b", "Off-Hours (Quiet)": "#00cc96"},
-    opacity=0.75
-)
-fig1.add_hline(y=800, line_dash="dot", line_color="black", annotation_text="Expected Speed (~800 Mbps)")
-fig1.update_layout(template="plotly_white", hovermode="x unified")
-fig1.write_html(os.path.join(CHARTS_DIR, "timeline_scatter.html"))
-
-# ==========================================
-# CHART 2: HOURLY PERFORMANCE PROFILE (Box Plot)
-# ==========================================
-print("📉 Generating Hourly Profile Chart...")
-fig2 = px.box(
-    df, x="Hour", y="Download_Mbps",
-    title="Hourly Speed Profile: Does the office kill the internet?",
+#--------------------------------------------------------------------------------------------
+# CHART 1: 24-HOUR PROFILE (Weekdays Only)
+print("📉 Generating 24-Hour Profile Chart (Weekdays Only)...")
+fig1 = px.box(
+    weekday_df, x="Hour", y="Download_Mbps",
+    title="24-Hour Speed Profile (Weekdays Only): Linear boxplot algorithm 25th and 75th percentiles",
     labels={"Hour": "Hour of the Day (0-23)", "Download_Mbps": "Download Speed (Mbps)"},
-    color_discrete_sequence=["#636efa"],
+    color_discrete_sequence=["#636efa"], # Blue
     points="all" 
 )
-fig2.update_layout(template="plotly_white", xaxis=dict(tickmode='linear', tick0=0, dtick=1))
-fig2.write_html(os.path.join(CHARTS_DIR, "hourly_profile.html"))
+fig1.update_layout(template="plotly_white", xaxis=dict(tickmode='linear', tick0=0, dtick=1))
+fig1.write_html(os.path.join(CHARTS_DIR, "hourly_profile_24h.html"))
 
-# ==========================================
-# 2. CHART 3: CONTINUOUS LINE CHART (DL & UL)
-# ==========================================
-print("〰️ Generating Continuous Line Chart...")
-# We use both DL and UL here so you can see if they drop together
-fig3 = px.line(
-    df, x="Timestamp", y=["Download_Mbps", "Upload_Mbps"],
-    title="Continuous Speed Distribution (Download & Upload)",
-    labels={"value": "Speed (Mbps)", "Timestamp": "Date / Time", "variable": "Metric"},
-    markers=True # Adds little dots on the line
+
+#--------------------------------------------------------------------------------------------
+# CHART 2: 8-16 HOURS PROFILE (Weekdays Only)
+print("📉 Generating 8-16 Hours Profile Chart (Weekdays Only)...")
+fig2 = px.box(
+    office_df, x="Hour", y="Download_Mbps",
+    title="Office Hours Speed Profile (Weekdays Only, 8-16): Linear boxplot algorithm 25th and 75th percentiles",
+    labels={"Hour": "Hour of the Day (8-16)", "Download_Mbps": "Download Speed (Mbps)"},
+    color_discrete_sequence=["#e02d0e"], # Red
+    points="all" 
 )
-fig3.update_layout(template="plotly_white", hovermode="x unified")
-fig3.write_html(os.path.join(CHARTS_DIR, "line_distribution.html"))
 
+# Force the X-axis to only show 8 through 16 sequentially
+fig2.update_layout(template="plotly_white", xaxis=dict(tickmode='linear', tick0=8, dtick=1))
+fig2.write_html(os.path.join(CHARTS_DIR, "hourly_profile_8_to_16.html"))
+
+#--------------------------------------------------------------------------------------------
 print("\n" + "="*50)
 print("✅ ANALYSIS COMPLETE! Charts saved in the 'charts' folder:")
-print(f"📄 {os.path.abspath(os.path.join(CHARTS_DIR, 'timeline_scatter.html'))}")
-print(f"📄 {os.path.abspath(os.path.join(CHARTS_DIR, 'hourly_profile.html'))}")
-print(f"📄 {os.path.abspath(os.path.join(CHARTS_DIR, 'line_distribution.html'))}")
+print(f"📄 {os.path.abspath(os.path.join(CHARTS_DIR, 'hourly_profile_24h.html'))}")
+print(f"📄 {os.path.abspath(os.path.join(CHARTS_DIR, 'hourly_profile_8_to_16.html'))}")
 print("="*50)
