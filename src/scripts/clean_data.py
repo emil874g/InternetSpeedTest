@@ -45,7 +45,7 @@ print("🚀 Running final data cleaning pipeline...\n")
 
 
 # 1. Load Data as strings
-df = pd.read_csv(RAW_CSV, dtype=str, keep_default_na=False)
+df = pd.read_csv(RAW_CSV, dtype=str, keep_default_na=False, on_bad_lines='skip')
 df.columns = df.columns.str.strip() 
 print(f"📥 Loaded {len(df)} total raw rows (including MacBooks).")
 

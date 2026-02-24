@@ -7,18 +7,18 @@ import time
 from datetime import datetime, timedelta
 
 # --- CONFIGURATION ---
-
-# Get the directory where this script lives (/app/scripts)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-# Go up one level to the root (/app), then into /data
 DATA_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "data")
 LOCAL_LOG = os.path.join(DATA_DIR, "office_internet_speeds.csv")
 HEARTBEAT_LOG = os.path.join(DATA_DIR, "heartbeat.log")
+os.makedirs(DATA_DIR, exist_ok=True)
 
-# Ensure the folder exists before writing
-os.makedirs(DATA_DIR, exist_ok=True) 
-
-SPEEDTEST_CMD = "speedtest"
+# Automatically use the correct speedtest command depending on the OS
+SYSTEM_OS = platform.system()
+if SYSTEM_OS == "Windows":
+    SPEEDTEST_CMD = os.path.join(SCRIPT_DIR, "speedtest.exe")  # Local .exe next to logger.py
+else:
+    SPEEDTEST_CMD = "speedtest"  # Globally installed inside Docker/Linux
 
 # --- HELPER FUNCTIONS ---
 def write_heartbeat(message):
