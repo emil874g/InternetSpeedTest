@@ -1,0 +1,9 @@
+services:
+  speedtest:
+    build: .
+    container_name: speedtest_office
+    restart: always
+    environment:
+      - TZ=Europe/Copenhagen #Danish timezone
+    volumes:
+      - .:/app

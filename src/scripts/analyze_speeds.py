@@ -2,8 +2,20 @@ import pandas as pd
 import plotly.express as px
 import os
 
-CLEAN_CSV = "office_internet_speeds_clean.csv"
-CHARTS_DIR = "charts"
+# --- CONFIGURATION ---
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(SCRIPT_DIR)
+
+# Point to the new data and charts folders
+DATA_DIR = os.path.join(BASE_DIR, "data")
+CHARTS_DIR = os.path.join(BASE_DIR, "charts")
+
+# Define the exact file paths
+RAW_CSV = os.path.join(DATA_DIR, "office_internet_speeds.csv")
+CLEAN_CSV = os.path.join(DATA_DIR, "office_internet_speeds_clean.csv")
+
+# Ensure charts folder exists
+os.makedirs(CHARTS_DIR, exist_ok=True)
 
 # 1. Create the charts folder if it doesn't exist
 os.makedirs(CHARTS_DIR, exist_ok=True)
