@@ -1,6 +1,7 @@
 # Office Internet Speed Tracker
 
-Automated internet speed logging and analysis tool using Docker.
+Automated internet speed logging and analysis tool using Docker. This is designed to test internet connections 24/7, but specifically for offices during the timeframe of 8-16.
+
 
 ## Setup
 1. Ensure **Docker Desktop** is installed and running.
